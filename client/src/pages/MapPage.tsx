@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useApp } from "@/context/AppContext";
 import { MapView } from "@/components/map/MapView";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { AlertTicker } from "@/components/layout/AlertTicker";
 import { ActionFormModal } from "@/components/modals/ActionFormModal";
 import { CommunityFormModal } from "@/components/modals/CommunityFormModal";
 import { Loader2 } from "lucide-react";
@@ -58,7 +57,6 @@ export default function MapPage() {
           />
         </div>
       </div>
-      <AlertTicker />
       <ActionFormModal />
       <CommunityFormModal />
     </div>

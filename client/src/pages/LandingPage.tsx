@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
+import { KnowledgeInsights } from "@/components/sections/KnowledgeInsights";
 import { 
   Map, 
   BarChart3, 
@@ -222,6 +223,9 @@ export default function LandingPage() {
           </Card>
         </div>
       </section>
+
+      {/* Knowledge & Insights Section */}
+      <KnowledgeInsights />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppProvider } from "@/context/AppContext";
 import { Navbar } from "@/components/layout/Navbar";
+import { AlertTicker } from "@/components/layout/AlertTicker";
 import LandingPage from "@/pages/LandingPage";
 import MapPage from "@/pages/MapPage";
 import AnalyticsPage from "@/pages/AnalyticsPage";
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/analytics" component={AnalyticsPage} />
         <Route component={NotFound} />
       </Switch>
+      <AlertTicker />
     </>
   );
 }

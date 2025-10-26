@@ -15,7 +15,7 @@ export function AlertTicker() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-12 bg-destructive/90 backdrop-blur-sm border-t border-destructive-foreground/20 z-50">
+    <div className="fixed bottom-0 left-0 right-0 h-12 bg-destructive/90 backdrop-blur-sm border-t border-destructive-foreground/20 z-[9999]">
       <div className="h-full flex items-center overflow-hidden">
         <div className="flex items-center gap-2 px-4 flex-shrink-0">
           <AlertTriangle className="w-4 h-4 text-destructive-foreground animate-pulse" />
