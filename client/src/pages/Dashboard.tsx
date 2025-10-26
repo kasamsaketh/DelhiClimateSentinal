@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useApp } from "@/context/AppContext";
-import { MainCanvas } from "@/components/scene/MainCanvas";
+import { MapView } from "@/components/map/MapView";
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { AlertTicker } from "@/components/layout/AlertTicker";
@@ -11,7 +11,7 @@ import { Loader2 } from "lucide-react";
 import type { Zone, ResScore, Alert } from "@shared/schema";
 
 export default function Dashboard() {
-  const { setAlerts } = useApp();
+  const { setAlerts, selectedZone, setSelectedZone } = useApp();
 
   const { data: zones = [], isLoading: zonesLoading } = useQuery<Zone[]>({
     queryKey: ["/api/zones"],
@@ -27,7 +27,7 @@ export default function Dashboard() {
     refetchInterval: 30000, // Refresh every 30 seconds
   });
 
-  // Sync alerts to context for 3D visualization
+  // Sync alerts to context
   useEffect(() => {
     setAlerts(alerts);
   }, [alerts, setAlerts]);
@@ -50,13 +50,20 @@ export default function Dashboard() {
       <Header />
       
       <div className="flex-1 flex overflow-hidden">
-        {/* 3D Canvas - Left side (main area) */}
-        <div className="flex-1">
-          <MainCanvas zones={zones} resScores={resScores} />
+        {/* Sidebar - Left side (30%) */}
+        <div className="w-[30%] min-w-[350px]">
+          <Sidebar />
         </div>
 
-        {/* Sidebar - Right side */}
-        <Sidebar />
+        {/* Map View - Right side (70%) */}
+        <div className="flex-1">
+          <MapView 
+            zones={zones} 
+            resScores={resScores}
+            selectedZone={selectedZone}
+            onZoneSelect={setSelectedZone}
+          />
+        </div>
       </div>
 
       {/* Alert Ticker - Bottom */}

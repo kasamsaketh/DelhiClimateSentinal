@@ -33,7 +33,7 @@ export function Sidebar() {
 
   if (!selectedZone) {
     return (
-      <aside className="w-[400px] bg-sidebar border-l border-sidebar-border p-6 flex items-center justify-center">
+      <aside className="h-full w-full bg-sidebar border-r border-sidebar-border p-6 flex items-center justify-center">
         <div className="text-center space-y-3">
           <Wind className="w-12 h-12 text-muted-foreground mx-auto" />
           <p className="text-muted-foreground">Select a zone to view details</p>
@@ -48,7 +48,7 @@ export function Sidebar() {
   );
 
   return (
-    <aside className="w-[400px] bg-sidebar border-l border-sidebar-border">
+    <aside className="h-full w-full bg-sidebar border-r border-sidebar-border">
       <ScrollArea className="h-full">
         <div className="p-6 space-y-6">
           {/* Zone Header */}
