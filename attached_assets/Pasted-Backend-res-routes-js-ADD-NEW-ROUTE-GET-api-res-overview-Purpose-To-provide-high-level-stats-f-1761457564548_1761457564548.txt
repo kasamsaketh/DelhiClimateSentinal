@@ -1,0 +1,83 @@
+Backend (res.routes.js)
+ADD NEW ROUTE: GET /api/res/overview
+
+Purpose: To provide high-level stats for the LandingPage.
+
+Returns: A JSON object: { "cityWideRes": 45, "activeAlerts": 3, "status": "Stressed" } (simulated).
+
+Frontend (App.jsx)
+Purpose: Must now wrap the application in AppContext.Provider and BrowserRouter.
+
+Logic:
+
+Render the persistent <Navbar /> and <AlertTicker />.
+
+Define the <Routes> for / (LandingPage), /map (ResilienceMapPage), and /analysis (DeepAnalysisPage).
+
+Frontend (LandingPage.jsx)
+Aesthetic: A stunning, minimalist, professional entry point.
+
+3D Graphic: Features the <AbstractPlexus.jsx> or the <ResHologram.jsx> as a central, spinning 3D graphic.
+
+Data: Fetches from GET /api/res/overview to display key stats (e.g., "City-Wide RES: 45").
+
+Navigation: A single, prominent, animated button (using react-spring) that says "Enter Command Center" and navigates to /map.
+
+Frontend (ResilienceMapPage.jsx)
+Purpose: A dedicated, full-screen view of the 3D map.
+
+NEW: RES Legend (Mandatory): Must render a 2D UI overlay (a legend) that clearly displays the RES ranges and colors:
+
+🔵 Stable (60–100)
+
+Condition: Manageable environmental pressures.
+
+Response: Routine monitoring and maintenance.
+
+🟡 Stressed (30–59)
+
+Condition: Significant pollution or resource strain.
+
+Response: Heightened alert and targeted interventions.
+
+🔴 Critical (0–29)
+
+Condition: Severe risk to health and safety.
+
+Response: Emergency response and maximum mobilization.
+
+Frontend (DelhiGlobe.jsx - on Map Page)
+Color Logic: The material-color for each zone must be set using the exact RES ranges and palette (#00f0ff for Stable, #ffc107 for Stressed, #dc3545 for Critical).
+
+Tooltip: onPointerOver shows the <Html> tooltip with zone.name and its exact res_score.
+
+Navigation Logic (CRITICAL): The onPointerDown (click) handler must be updated:
+
+It calls setSelectedZoneId(zone.id) (from AppContext).
+
+It programmatically calls Maps('/analysis') (using the useNavigate hook from react-router-dom).
+
+Frontend (DeepAnalysisPage.jsx)
+Purpose: This page replaces the old Sidebar.jsx. It is a 2D, grid-based dashboard for in-depth insights.
+
+Data:
+
+It reads selectedZoneId from AppContext.
+
+If selectedZoneId is null, it displays a "Please select a zone from the map" message.
+
+If selectedZoneId exists, it fetches all detailed data from GET /api/res/zone/:id.
+
+Layout:
+
+Displays the zone name and its current RES/PM2.5.
+
+Displays the probableSource and predictedDeficit strings.
+
+Renders the <TrendChart /> (from /components/charts/).
+
+Renders a table/list of recent action_reports for this zone.
+
+Renders a table/list of community_reports for this zone.
+
+Includes the buttons to open the ActionFormModal and CommunityFormModal.
