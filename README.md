@@ -1,5 +1,5 @@
 Delhi Climate Sentinel
-Innovators Conclave 2025 Winning Project — Team Nivaaran
+ Team Nivaaran 2
 Overview
 
 Delhi Climate Sentinel is a data-driven climate intelligence platform designed to assess and visualize Delhi’s climate resilience. It integrates AI, geospatial visualization, and multi-source datasets to generate actionable insights for monitoring air, water, and infrastructure risks.
